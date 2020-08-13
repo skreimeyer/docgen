@@ -1,0 +1,677 @@
+<html>
+<head>
+<style>
+.title {
+    text-align: center;
+}
+.container {
+    display: flex;
+    flex-direction:column;
+    margin-left:10%;
+    margin-right:10%;
+    background: gray;
+}
+
+.row {
+    display: flex;
+    background: snow;
+}
+.underline {
+    flex-grow: 1;
+    border-bottom: 1px solid black;
+    margin-left: 5px;
+}
+</style>
+</head>
+<body>
+<h1 class="title">Stormwater Pollution Prevention Plan (SWPPP) for Construction Activity for Large Construction Sites</h1>
+<h2 class="title">National Pollutant Discharge Elimination System (NPDES)</h2>
+<h2 class="title">General Permit</h2>
+<h3 class="title">Prepared for:</h3>
+<h3 class="title">Date:</h3>
+<div class="title"><%= Time.now.strftime("%B %d, %Y") %></div>
+<h3 class="title">Prepared by:</h3>
+<div class="container">
+<div class="row"><div>Project Name and Location: </div><div class="underline">there is content</div></div>
+<div class="row"><div>Property Parcel Number (Optional): </div><div class="underline"></div></div>
+<div class="row"><div>Operator Name and Address: </div><div class="underline"></div></div>
+<ol>
+    <li class="subheading">A. Site Description</li>
+    <ol>
+        <div class="row"><li><div>a. Project description, intended use after NOI is filed:</div></li><div class="underline"></div></div>
+        <div class="row"><li><div>b. Sequence of major activities which disturb soils:</div></li><div class="underline"></div></div>
+        <div class="row"><li><div>c. Total Area:</div></li><div class="underline"></div><div>Disturbed Area:</div><div class="underline"></div></div>
+        <li>d. Soils Information:</li>
+        <ol>
+            <li>i. Runoff Coefficient Pre-Construction (See Appendix A) :  <div class="underline"></div></li>
+            <li>ii. Runoff Coefficient Post-Construction (See Appendix A) :  <div class="underline"></div></li>
+            <li>iii. Describe the soil or the quality of any discharge from the site:  <div class="underline"></div></li>
+        </ol>
+    </ol>
+    <li class="subheading">B. Responsible Parties</li>
+    <table>
+        <tr>
+            <th>Individual/Company</th>
+            <th>Phone Number</th>
+            <th>Service Provided</th>
+        <tr>
+    </table>
+    <li class="subheading">C. Receiving Waters</li>
+    <ol>
+        <li>a. The following waterbody (or waterbodies) receives stormwater from this construction site: <div class="underline"></div></li>
+        <li>b. Is the project located within the jurisdiction of an MS4? <input type="checkbox"><label>Yes</label><input type="checkbox"><label>No</label></li>
+        <ol>
+            <li>i. If yes, Name of MS4: <div class="underline"></div></li>
+        </ol>
+        <li>c. Ultimate Receiving Water:</li>
+<input type="checkbox"><label>Red River</label>
+<input type="checkbox"><label>Ouachita River</label>
+<input type="checkbox"><label>Arkansas River</label>
+<input type="checkbox"><label>White River</label>
+<input type="checkbox"><label>St. Francis River</label>
+<input type="checkbox"><label>Mississippi River</label>
+    </ol>
+1Increases in total acreage require an additional acreage request, an updated SWPPP and a $200 modification fee to be submitted to ADEQ.
+2Increases in only disturbed acreage require an additional acreage request and an updated SWPPP to be submitted to ADEQ.
+    <li class="subheading">D. Documentation of Permit Eligibility Related to the 303(d) list and Total Maximum Daily Loads (TMDL) (https://www.adeq.state.ar.us/water/planning/)</li>
+    <ol>
+        <li>a. Does the stormwater enter a waterbody on the 303(d) list or with an approved TMDL? <input type="checkbox"><label>Yes</label><input type="checkbox"><label>No</label></li>
+        <li>b. If yes:	</li>
+        <ol>
+            <li>i. Waterbody identified on 303(d) list:<div class="underline"></div></li>
+            <li>ii. Pollutant addressed on 303(d) list or TMDL: <div class="underline"></div></li>
+            <li>iii. This specific project ,or generally construction activity i.e. surface erosion, is identified on 303(d) list or associated assumptions and allocations identified in the TMDL for the discharge: <input type="checkbox"><label>Yes</label><input type="checkbox"><label>No</label></li>
+            <li>iv. Additional controls implemented: <div class="underline"></div></li>
+        </ol>
+    </ol>
+    <li class="subheading">E. Attainment of Water Quality Standards After Authorization</li>
+    <ol>
+        <li>a. The permittee must select, install, implement, and maintain BMPs at the construction site that minimize pollutants in the discharge as necessary to meet applicable water quality standards. In general, except in situations explained below, the SWPPP developed, implemented, and updated to be considered as stringent as necessary to ensure that the discharges do not cause or contribute to an excursion above any applicable water quality standard.</li>
+        <li>b. At any time after authorization, the Department may determine that the stormwater discharges may cause, have reasonable potential to cause, or contribute to an excursion above any applicable water quality standard. If such a determination is made, the Department will require the permittee to:</li>
+        <ol>
+            <li>    i. Develop a supplemental BMP action plan describing SWPPP modifications to address adequately the identified water quality concerns and submit valid and verifiable data and information that are representative of ambient conditions and indicate that the receiving water is attaining water quality standards; or</li>
+            <li>    ii. Cease discharges of pollutants from construction activity and submit an individual permit application.</li>
+        </ol>
+    </ol>
+<p>I understand and agree to follow the above text regarding the attainment of water quality standards after authorization. <input type="checkbox"><label>Yes</label><input type="checkbox"><label>No</label></p>
+
+    <li class="subheading">F. Site Map Requirements (Attach Site Map):</li>
+    <ol>
+        <li>a. Pre-construction topographic view;</li>
+        <li>b. Direction of stormwater flow (i.e., use arrows to show which direction stormwater will flow) and approximate slopes anticipated after grading activities;</li>
+        <li>c. Delineate on the site map areas of soil disturbance and areas that will not be disturbed under the coverage of this permit;</li>
+        <li>d. Location of major structural and nonstructural controls identified in the plan;</li>
+        <li>e. Location of main construction entrance and exit;</li>
+        <li>f. Location where stabilization practices are expected to occur;</li>
+        <li>g. Locations of off-site materials, waste, borrow area, or equipment storage area;</li>
+        <li>h. Location of areas used for concrete wash-out;</li>
+        <li>i. Location of all surface water bodies (including wetlands) with associated natural buffer boundary lines.  Identify floodplain and floodway boundaries, if available;</li>
+        <li>j. Locations where stormwater is discharged to a surface water and/or municipal separate storm sewer system if applicable,</li>
+        <li>k. Locations where stormwater is discharged off-site (should be continuously updated);</li>
+        <li>l. Areas where final stabilization has been accomplished and no further construction phase permit requirements apply;</li>
+        <li>m. A legend that identifies any erosion and sediment control measure symbols/labels used in the site map and/or detail sheet; and</li>
+        <li>n. Locations of any storm drain inlets on the site and in the immediate vicinity of the site.</li>
+    </ol>
+    <li class="subheading">G. Stormwater Controls</li>
+    <ol>
+        <li>a. Initial Site Stabilization, Erosion and Sediment Controls, and Best Management Practices:</li>
+        <ol>
+            <li>    i. Initial Site Stabilization: <div class="underline"></div> </li>
+            <li>    ii. Erosion and Sediment Controls: <div class="underline"></div> <div class="underline"></div></li>
+            <li>    iii. If periodic inspections or other information indicates a control has been used inappropriately or incorrectly, the operator will replace or modify the control for site situations: <input type="checkbox"><label>Yes</label><input type="checkbox"><label>No</label></li>
+    If No, explain: <div class="underline"></div></li>
+            <li>    iv. Off-site accumulations of sediment will be removed at a frequency sufficient to minimize off-site impacts: <input type="checkbox"><label>Yes</label><input type="checkbox"><label>No</label></li>
+    If No, explain: <div class="underline"></div></li>
+            <li>    v. Sediment will be removed from sediment traps or sedimentation ponds when design capacity has been reduced by 50%: <input type="checkbox"><label>Yes</label><input type="checkbox"><label>No</label></li>
+    If No, explain: <div class="underline"></div></li>
+            <li>    vi. Litter, construction debris, and construction chemicals exposed to stormwater shall be prevented from becoming a pollutant source for stormwater discharges: <input type="checkbox"><label>Yes</label><input type="checkbox"><label>No</label></li>
+    If No, explain: <div class="underline"></div></li>
+            <li>    vii. Off-site material storage areas used solely by the permitted project are being covered by this SWPPP: <input type="checkbox"><label>Yes</label><input type="checkbox"><label>No</label></li>
+    If Yes, explain additional BMPs implemented at off-site material storage area: <div class="underline"></div> <div class="underline"></div></li>
+        </ol>
+        <li>b. Stabilization Practices</li>
+        <ol>
+            <li>    i. Description and Schedule: <div class="underline"></div> <div class="underline"></div>                                   <div class="underline"></div>                                                                                                          </li>
+            <li>    ii. Are buffer areas required? <input type="checkbox"><label>Yes</label><input type="checkbox"><label>No</label></li>
+    If Yes, are buffer areas being used? <input type="checkbox"><label>Yes</label><input type="checkbox"><label>No</label>
+    If Yes, describe natural buffer areas: <div class="underline"></div> <div class="underline"></div>
+    If No, explain why not: <div class="underline"></div> <div class="underline"></div>
+            <li>    iii. A record of the dates when grading activities occur, when construction activities temporarily or permanently cease on a portion of the site, and when stabilization measures are initiated shall be included with the plan.</li>
+    <input type="checkbox"><label>Yes</label><input type="checkbox"><label>No</label>
+    If No, explain: <div class="underline"></div> <div class="underline"></div>
+            <li>    iv. Deadlines for stabilization:</li>
+            <ol>
+                    <li>1. Stabilization procedures will be initiated 14 days after construction activity temporarily ceases on a portion of the site.</li>
+                    <li>2. Stabilization procedures will be initiated immediately in portions of the site where construction activities have permanently ceased.</li>
+            </ol>
+        </ol>
+        <li>c. Structural Practices</li>
+        <ol>
+            <li>    i. Describe any structural practices to divert flows from exposed soils, store flows, or otherwise limit runoff and the discharge of pollutants from exposed areas of the site: <div class="underline"></div> <div class="underline"></div> </li>
+            <li>    ii. Describe Velocity Dissipation Devices: <div class="underline"></div></li>
+            <li>    iii. Sediment Basins:</li>
+        </ol>
+Are 10 or more acres draining to a common point? <input type="checkbox"><label>Yes</label><input type="checkbox"><label>No</label>
+Is a sediment basin included in the project? <input type="checkbox"><label>Yes</label><input type="checkbox"><label>No</label>
+If Yes, what is the designed capacity for the storage?
+3600 cubic feet per acre = : <div class="underline"></div>
+or
+10 year, 24 hour storm = :<div class="underline"></div>
+ Other criteria were used to design basin: <div class="underline"></div>
+If No, explain why no sedimentation basin was included and describe required natural buffer areas and other controls implemented instead: <div class="underline"></div>
+    H. Other Controls
+    a. Solid materials, including building materials, shall be prevented from being discharged to Waters of the State: <input type="checkbox"><label>Yes</label><input type="checkbox"><label>No</label>
+    b. Off-site vehicle tracking of sediments and the generation of dust shall be minimized through the use of: 
+A stabilized construction entrance and exit 
+Vehicle tire washing
+Other controls, describe: <div class="underline"></div> <div class="underline"></div>
+    c. Temporary Sanitary Facilities: <div class="underline"></div>
+    d. Concrete Waste Area Provided: 
+Yes 
+No.  Concrete is used on the site, but no concrete washout is provided.  
+Explain why: <div class="underline"></div>
+N/A, no concrete will be used with this project
+    e. Fuel Storage Areas, Hazardous Waste Storage, and Truck Wash Areas: <div class="underline"></div>
+    I. Non-Stormwater Discharges
+        a. The following allowable non-stormwater discharges comingled with stormwater are present or anticipated at the site:
+Fire-fighting activities;
+Fire hydrant flushings;
+Water used to wash vehicles (where detergents or other chemicals are not used) or control dust in accordance with Part II.A.4.H.2;
+Potable water sources including uncontaminated waterline flushings;
+Landscape Irrigation;
+Routine external building wash down which does not use detergents or other chemicals;
+Pavement wash waters where spills or leaks of toxic or hazardous materials have not occurred (unless all spilled materials have been removed) and where detergents or other chemicals are not used;
+Uncontaminated air conditioning, compressor condensate (See Part I.B.13.C of the permit);
+Uncontaminated springs, excavation dewatering and groundwater (See Part I.B.13.C of the permit);
+Foundation or footing drains where flows are not contaminated with process materials such as solvents (See Part I.B.13.C of the permit);
+        b. Describe any controls associated with non-stormwater discharges present at the site: <div class="underline"></div>
+
+    J. Permanent Controls for Post-Construction Stormwater Management:
+Describe measures installed during the construction process to control pollutants in stormwater discharges that will occur after construction operations have been completed: <div class="underline"></div>
+
+    K. Applicable State or Local Programs: The SWPPP will be updated as necessary to reflect any revisions to applicable federal, state, or local requirements that affect the stormwater controls implemented at the site. <input type="checkbox"><label>Yes</label><input type="checkbox"><label>No</label>
+
+    L. Inspections
+    a. Inspection frequency:
+Every 7 calendar days 
+or
+At least once every 14 calendar days and within 24 hours of the end of a storm even 0.25 inches or greater (a rain gauge must be maintained on-site)
+    b. Inspections:
+Completed inspection forms will be kept with the SWPPP.
+ADEQ’s inspection form will be used (See Appendix B)
+or
+A form other than ADEQ’s inspection form will be used and is attached (See inspection form requirements Part II.A.4.L.2)
+    c. Inspection records will be retained as part of the SWPPP for at least 3 years from the date of termination.
+    d. It is understood that the following sections describe waivers of site inspection requirements.  All applicable documentation requirements will be followed in accordance with the referenced sections.
+        i. Winter Conditions (Part II.A.4.L.4)
+        ii. Adverse Weather Conditions (Part II.A.4.L.5)
+
+    M. Maintenance:
+The following procedures to maintain vegetation, erosion and sediment control measures and other protective measures in good, effective operating condition will be followed: <div class="underline"></div>
+Any necessary repairs will be completed, when practicable, before the next storm event, but not to exceed a period of 3 business days of discovery, or as otherwise directed by state or local officials.
+
+    N. Employee Training:
+The following is a description of the training plan for personnel (including contractors and subcontractors) on this project: <div class="underline"></div>
+**Note, Formal training classes given by Universities or other third-party organizations are not required, but recommended for qualified trainers; the permittee is responsible for the content of the training being adequate for personnel to implement the requirements of the permit.
+
+Certification
+"I certify under penalty of law that this document and all attachments such as Inspection Form were prepared under my direction or supervision in accordance with a system designed to ensure that qualified personnel properly gather and evaluate the information submitted. Based on my inquiry of the person or persons who manage the system, or those persons directly responsible for gathering the information, the information submitted is, to the best of my knowledge and belief, true, accurate, and complete. I am aware that there are significant penalties for submitting false information, including the possibility of fine and imprisonment for knowing violations."
+
+Signature of Responsible or Cognizant Official: 							
+
+Title: <div class="underline"></div>				Date: 				
+</div>
+
+
+
+
+Total Site Area = 
+                             Acres
+ [A]
+
+
+
+
+
+Existing Site Conditions
+
+
+
+Impervious Site Area 1 = 
+                           Acres
+ [B]
+
+Impervious Site Area Runoff Coefficient 2, 4 = 
+ 
+[C]
+
+Pervious Site Area 3 = 
+                           Acres
+ [D]
+
+Pervious Site Area Runoff Coefficient 4 = 
+
+[E]
+
+
+
+
+
+Pre-Construction Runoff Coefficient
+
+
+
+                                                               [B x C] + [D x E]
+= This is your pre-construction runoff coefficient.
+                                                           [A]
+
+
+
+
+
+Proposed Site Conditions (after construction)
+
+
+
+Impervious Site Area 1 = 
+                          Acres
+ [F]
+
+Impervious Site Area Runoff Coefficient 2, 4 = 
+
+[G]
+
+Pervious Site Area 3 = 
+                          Acres
+ [H]
+
+Pervious Site Area Runoff Coefficient 4 = 
+
+[I]
+
+
+
+
+
+Post-Construction Runoff Coefficient
+
+
+
+                                                                 [F x G] + [H x I]
+= This is your post-construction runoff coefficient.
+                                                             [A]
+
+
+
+
+
+
+
+
+
+1. Includes paved areas, areas covered by buildings, and other impervious surfaces.
+2. Use 0.95 unless lower or higher runoff coefficient can be verified.
+3. Includes areas of vegetation, most unpaved or uncovered soil surfaces, and other pervious areas.
+4. Refer to local Hydrology Manual for typical C values.
+
+Note:  The impervious and pervious surfaces should equal the total area.
+Inspector Name: 							Date of Inspection: 			
+Inspector Title: 							
+
+Date of Rainfall: 						Duration of Rainfall: 					
+Days Since Last Rain Event: 			 days		Rainfall Since Last Rain Event: 		 inches 
+
+Description of any Discharges During Inspection: 									
+Location of Discharges of Sediment/Other Pollutant (specify pollutant & location): 																				
+
+Locations in Need of Additional BMPs: 											
+
+Information on Location of Construction Activities
+
+Information on BMPs in Need of Maintenance
+Location 
+In Working Order?
+Maintenance Scheduled Date
+Maintenance Completed Date
+Maintenance to be Performed By
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Changes required to the SWPPP: 																	
+Reasons for changes: 																			
+SWPPP changes completed (date): 			
+
+"I certify under penalty of law that this document and all attachments such as Inspection Form were prepared under my direction or supervision in accordance with a system designed to ensure that qualified personnel properly gather and evaluate the information submitted.  Based on my inquiry of the person or persons who manage the system, or those persons directly responsible for gathering the information, the information submitted is, to the best of my knowledge and belief, true, accurate, and complete.  I am aware that there are significant penalties for submitting false information, including the possibility of fine and imprisonment for knowing violations."
+
+Signature of Responsible or Cognizant Official:	 						    Date:			
+
+Title: 								
+
+The BMPs listed here should be considered for every project. Those BMPs that are not included in the SWPPP
+should be checked as “Not Used” with a brief statement describing why it is not being used.
+
+Note: Appendix C and D do not have to be submitted with the SWPPP. These attachments are for use during the development of the SWPPP.
+
+EROSION CONTROL BMPs
+BMP
+BMP Considered for project
+BMP Used
+BMP Not Used
+If not used, state reason
+EC-1 Scheduling
+
+
+
+ 
+EC-2 Preservation of Existing Vegetation
+
+
+
+ 
+EC-3 Hydraulic Mulch
+
+
+
+ 
+EC-4 Hydroseeding
+
+
+
+ 
+EC-5 Soil Binders
+
+
+
+ 
+EC-6 Straw Mulch
+
+
+
+ 
+EC-7 Geotextiles & Mats
+
+
+
+ 
+EC-8 Wood Mulching
+
+
+
+ 
+EC-9 Earth Dikes & Drainage Swales
+
+
+
+ 
+EC-10 Velocity Dissipation Devices
+
+
+
+ 
+EC-11 Slope Drains
+
+
+
+ 
+EC-12 Stream bank Stabilization
+
+
+
+ 
+SEDIMENT CONTROL BMPs
+BMP
+BMP Considered for project
+BMP Used
+BMP Not Used
+If not used, state reason
+SE-1 Silt Fence
+
+
+
+ 
+SE-2 Sediment Basin
+
+
+
+ 
+SE-3 Sediment Trap
+
+
+
+ 
+SE-4 Check Dam
+
+
+
+ 
+SE-5 Fiber Rolls
+
+
+
+ 
+SE-6 Gravel Bag Berm
+
+
+
+ 
+SE-7 Street Sweeping and Vacuuming
+
+
+
+ 
+SE-8 Sand Bag Barrier
+
+
+
+ 
+SE-9 Straw Bale Barrier
+
+
+
+ 
+SE-10 Storm Drain Inlet Protection
+
+
+
+ 
+SE-11 Chemical Treatment
+
+
+
+ 
+WIND EROSION CONTROL BMPs
+BMP
+BMP Considered for project
+BMP Used
+BMP Not Used
+If not used, state reason
+WE-1 Wind Erosion Control
+
+
+
+ 
+
+TRACKING CONTROL BMPs
+BMP
+BMP Considered for project
+BMP Used
+BMP Not Used
+If not used, state reason
+TR-1 Stabilized Construction Entrance/Exit
+
+
+
+ 
+TR-2 Stabilized Construction Roadway
+
+
+
+ 
+TR-3 Entrance/Outlet Tire Wash
+
+
+
+ 
+NON-STORM WATER MANAGEMENT BMPs
+BMP
+BMP Considered for project
+BMP Used
+BMP Not Used
+If not used, state reason
+NS-1 Water Conservation Practices
+
+
+
+ 
+NS-2 Dewatering Operations
+
+
+
+ 
+NS-3 Paving and Grinding Operations
+
+
+
+ 
+NS-4 Temporary Stream Crossing
+
+
+
+ 
+NS-5 Clear Water Diversion
+
+
+
+ 
+NS-6 Illicit Connection/ Discharge
+
+
+
+ 
+NS-7 Potable Water/Irrigation
+
+
+
+ 
+NS-8 Vehicle and Equipment Cleaning
+
+
+
+ 
+NS-9 Vehicle and Equipment Fueling
+
+
+
+ 
+NS-10 Vehicle and Equipment Maintenance
+
+
+
+ 
+NS-11 Pile Driving Operations
+
+
+
+ 
+NS-12 Concrete Curing
+
+
+
+ 
+NS-13 Concrete Finishing
+
+
+
+ 
+NS-14 Material and Equipment Use Over Water
+
+
+
+ 
+NS-15 Demolition Adjacent to Water
+
+
+
+ 
+NS-16 Temporary Batch Plants
+
+
+
+ 
+WASTE MANAGEMENT AND MATERIALS POLLUTION CONTROL BMPs
+BMP
+BMP Considered for project
+BMP Used
+BMP Not Used
+If not used, state reason
+WM-1 Material Delivery and Storage
+
+
+
+ 
+WM-2 Material Use
+
+
+
+      
+WM-3 Stockpile Management
+
+
+
+ 
+WM-4 Spill Prevention and Control
+
+
+
+ 
+WM-5 Solid Waste Management
+
+
+
+ 
+WM-6 Hazardous Waste Management
+
+
+
+ 
+WM-7 Contaminated Soil Management
+
+
+
+ 
+WM-8 Concrete Waste Management
+
+
+
+ 
+WM-9 Sanitary/Septic Waste Management
+
+
+
+ 
+WM-10 Liquid Waste Management
+
+
+
+ 
+
+</body>
+</html>
