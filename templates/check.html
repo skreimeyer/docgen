@@ -9,24 +9,25 @@
     flex-direction:column;
     margin-left:10%;
     margin-right:10%;
-    background: gray;
+    margin-bottom:5%;
 }
 
 .row {
     display: flex;
-    background: snow;
 }
 .underline {
-    flex-grow: 1;
+    flex: 1;
     border-bottom: 1px solid black;
     margin-left: 5px;
 }
 
-.grid-container {
-    margin-left:10%;
-    margin-right:10%;
-    display: grid;
-    grid-template-columns: 60% 30% 10%;
+.grow1 {
+    flex:1;
+}
+
+.grow3 {
+    flex-grow:3;
+    flex-basis:0;
 }
 
 .center {
@@ -49,7 +50,7 @@ ul {
 <h2 class="title">General Permit</h2>
 <h3 class="title">Prepared for:</h3>
 <h3 class="title">Date:</h3>
-<div class="title">August 16, 2020</div>
+<div class="title">August 18, 2020</div>
 <h3 class="title">Prepared by:</h3>
 <div style="page-break-after:always"></div>
 <div class="container">
@@ -271,25 +272,25 @@ ul {
     <div class="row">Title:<div class="underline"></div>Date:<div class="underline"></div></div>
 </div>
 <div style="page-break-after:always"></div>
+<div class="container">
 <h2>Computation Sheet for Determining Runoff Coefficient</h2>
-<div class="grid-container">
-    <div>Total Site Area =</div><div class="underline right">Acres</div><div class="center">[A]</div>
-    <h3>Existing Site Conditions</h3><div></div><div></div>
-    <div>Impervious Site Area<sup>1</sup> =</div><div class="underline right">Acres</div><div class="center">[B]</div>
-    <div>Impervious Site Area Runoff Coefficient<sup>2,3</sup> =</div><div class="underline right"></div><div class="center">[C]</div>
-    <div>Pervious Site Area<sup>3</sup></div><div class="underline right">Acres</div><div class="center">[D]</div>
-    <div>Pervious Site Area Runoff Coefficient<sup>4</sup> =</div><div class="underline right"></div><div class="center">[E]</div>
-    <h3>Pre-Construction Runoff Coefficient</h3><div></div><div></div>
-    <div class="right"><span style="text-decoration: underline">[B x C] + [D x E]</span> =</div><div class ="underline right"></div><div></div>
-    <div class="right" style="padding-right: 50px">[A]</div><div></div><div></div>
-    <h3>Proposed Site conditions (after construction)</h3><div></div><div></div>
-    <div>Impervious Site Area<sup>1</sup> =</div><div class="underline right">Acres</div><div class="center">[F]</div>
-    <div>Pervious Site Area Runoff Coefficient<sup>2,4</sup> =</div><div class="underline right"></div><div class="center">[G]</div>
-    <div>Pervious Site Area<sup>3</sup> =</div><div class="underline right">Acres</div><div class="center">[H]</div>
-    <div>Pervious Site Area Runoff Coefficient<sup>4</sup> =</div><div class="underline right"></div><div class="center">[I]</div>
-    <h3>Post-Construction Runoff Coefficient</h3><div></div><div></div>
-    <div class="right"><span style="text-decoration: underline">[F x G] + [H x I]</span> =</div><div class ="underline right"></div><div></div>
-    <div class="right" style="padding-right: 50px">[A]</div><div></div><div></div>
+    <div class="row"><div class="grow3">Total Site Area =</div><div class="underline right">Acres</div><div class="center grow1">[A]</div></div>
+    <div class="row"><h3>Existing Site Conditions</h3><div></div><div></div></div>
+    <div class="row"><div class="grow3">Impervious Site Area<sup>1</sup> =</div><div class="underline right">Acres</div><div class="center grow1">[B]</div></div>
+    <div class="row"><div class="grow3">Impervious Site Area Runoff Coefficient<sup>2,3</sup> =</div><div class="underline right"></div><div class="center grow1">[C]</div></div>
+    <div class="row"><div class="grow3">Pervious Site Area<sup>3</sup></div><div class="underline right">Acres</div><div class="center grow1">[D]</div></div>
+    <div class="row"><div class="grow3">Pervious Site Area Runoff Coefficient<sup>4</sup> =</div><div class="underline right"></div><div class="center grow1">[E]</div></div>
+    <div class="row"><h3>Pre-Construction Runoff Coefficient</h3></div>
+    <div class="row"><div class="right grow3"><span style="text-decoration: underline">[B x C] + [D x E]</span> =</div><div class ="underline right"></div><div class="grow1"></div></div>
+    <div class="row"><div class="right grow3" style="padding-right: 100px">[A]</div><div class="grow1"></div><div class="grow1"></div></div>
+    <div class="row"><h3>Proposed Site conditions (after construction)</h3></div>
+    <div class="row"><div class="grow3">Impervious Site Area<sup>1</sup> =</div><div class="underline right">Acres</div><div class="center grow1">[F]</div></div>
+    <div class="row"><div class="grow3">Pervious Site Area Runoff Coefficient<sup>2,4</sup> =</div><div class="underline right"></div><div class="center grow1">[G]</div></div>
+    <div class="row"><div class="grow3">Pervious Site Area<sup>3</sup> =</div><div class="underline right">Acres</div><div class="center grow1">[H]</div></div>
+    <div class="row"><div class="grow3">Pervious Site Area Runoff Coefficient<sup>4</sup> =</div><div class="underline right"></div><div class="center grow1">[I]</div></div>
+    <div class="row"><h3>Post-Construction Runoff Coefficient</h3></div>
+    <div class="row"><div class="right grow3"><span style="text-decoration: underline">[F x G] + [H x I]</span> =</div><div class ="underline right"></div><div class="grow1"></div></div>
+    <div class="row"><div class="right grow3" style="padding-right: 100px">[A]</div><div class="grow1"></div><div class="grow1"></div></div>
 </div>
 <div class="container">
     <ol>
