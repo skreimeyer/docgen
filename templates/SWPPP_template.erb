@@ -49,6 +49,10 @@ ul {
 <h2 class="title">National Pollutant Discharge Elimination System (NPDES)</h2>
 <h2 class="title">General Permit</h2>
 <h3 class="title">Prepared for:</h3>
+<%= "<h4 class=\"title\">#{client['org_name']}</h4>" %>
+<%= "<h4 class=\"title\">#{client['address']}</h4>" %>
+<%= "<h4 class=\"title\">#{client['address2']}</h4>" %>
+<%= "<h4 class=\"title\">#{client['city']}, #{client['state']}</h4>" %>
 <h3 class="title">Date:</h3>
 <div class="title"><%= Time.now.strftime("%B %d, %Y") %></div>
 <h3 class="title">Prepared by:</h3>
