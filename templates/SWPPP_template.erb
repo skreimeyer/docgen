@@ -50,20 +50,22 @@ ul {
 <h2 class="title">General Permit</h2>
 <h3 class="title">Prepared for:</h3>
 <%= "<h4 class=\"title\">#{client['org_name']}</h4>" %>
-<%= "<h4 class=\"title\">#{client['address']}</h4>" %>
-<%= "<h4 class=\"title\">#{client['address2']}</h4>" %>
-<%= "<h4 class=\"title\">#{client['city']}, #{client['state']}</h4>" %>
+<%= "<h4 class=\"title\">#{client['address_street']}</h4>" %>
+<%= "<h4 class=\"title\">#{client['address_city']}, #{client['address_state']}</h4>" %>
 <h3 class="title">Date:</h3>
 <div class="title"><%= Time.now.strftime("%B %d, %Y") %></div>
 <h3 class="title">Prepared by:</h3>
+<%= "<h4 class=\"title\">#{engineer['firm']}</h4>" %>
+<%= "<h4 class=\"title\">#{engineer['address_street']}</h4>" %>
+<%= "<h4 class=\"title\">#{engineer['address_city']}, #{engineer['address_state']}</h4>" %>
 <div style="page-break-after:always"></div>
 <div class="container">
 <div class="row"><div>Project Name and Location: </div><div class="underline">there is content</div></div>
 <div class="row"><div>Property Parcel Number (Optional): </div><div class="underline"></div></div>
 <div class="row"><div>Operator Name and Address: </div><div class="underline"></div></div>
 <ol type="A">
-    <li class="subheading">Site Description</li>
     <ol type="a">
+    <li class="subheading">Site Description</li>
         <div class="row"><li><div>Project description, intended use after NOI is filed:</div></li><div class="underline"></div></div>
         <div class="row"><li><div>Sequence of major activities which disturb soils:</div></li><div class="underline"></div></div>
         <div class="row"><li><div>Total Area:</div></li><div class="underline"></div><div>Disturbed Area:</div><div class="underline"></div></div>

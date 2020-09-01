@@ -11,6 +11,6 @@ template = File.read('templates/SWPPP_template.erb')
 render = ERB.new(template)
 html = render.result_with_hash(config)
 
-File.open('result.html', 'w') { |f| f.write(html) }
+File.open('templates/check.html', 'w') { |f| f.write(html) }
 
 puts 'done'
