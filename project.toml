@@ -6,8 +6,8 @@ address_city = "Little Rock"
 address_state = "Arkansas"
 address_zip = 72201
 contact_name = "David Hopkins, P.E."
-contact_phone = "501-371-4475"
-contact_email = "dhopkins@littlerock.gov"
+contact_phone = "_371-4475"
+contact_email = "__@littlerock.gov"
 
 [engineer]
 firm = "Crafton, Tull & Associates, Inc."
@@ -17,8 +17,8 @@ address_state = "Arkansas"
 address_zip = 72211
 senior = "Brad Peterson"
 contact = "Sam Kreimeyer"
-phone = "501-664-3245 ext.1167"
-email = "sam.kreimeyer@craftontull.com"
+phone = "_664-3245 ext.1167"
+email = "__@craftontull.com"
 
 
 [project]
