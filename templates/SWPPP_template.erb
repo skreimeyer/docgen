@@ -49,31 +49,31 @@ ul {
 <h2 class="title">National Pollutant Discharge Elimination System (NPDES)</h2>
 <h2 class="title">General Permit</h2>
 <h3 class="title">Prepared for:</h3>
-<%= "<h4 class=\"title\">#{client['org_name']}</h4>" %>
-<%= "<h4 class=\"title\">#{client['address_street']}</h4>" %>
-<%= "<h4 class=\"title\">#{client['address_city']}, #{client['address_state']}</h4>" %>
+<h4 class="title"><%= client['org_name'] %></h4>
+<h4 class="title"><%= client['address_street'] %></h4>
+<h4 class="title"><%= client['address_city'] %>, <%= client['address_state'] %></h4>
 <h3 class="title">Date:</h3>
 <div class="title"><%= Time.now.strftime("%B %d, %Y") %></div>
 <h3 class="title">Prepared by:</h3>
-<%= "<h4 class=\"title\">#{engineer['firm']}</h4>" %>
-<%= "<h4 class=\"title\">#{engineer['address_street']}</h4>" %>
-<%= "<h4 class=\"title\">#{engineer['address_city']}, #{engineer['address_state']}</h4>" %>
+<h4 class="title"><%= engineer['firm'] %></h4>
+<h4 class="title"><%= engineer['address_street'] %></h4>
+<h4 class="title"><%= engineer['address_city'] %>, <%= engineer['address_state'] %></h4>
 <div style="page-break-after:always"></div>
 <div class="container">
-<div class="row"><div>Project Name and Location: </div><div class="underline">there is content</div></div>
-<div class="row"><div>Property Parcel Number (Optional): </div><div class="underline"></div></div>
-<div class="row"><div>Operator Name and Address: </div><div class="underline"></div></div>
+<div class="row"><div>Project Name and Location: </div><% if project['name'] %><div style="text-decoration:underline"><%= project['name'] %></div><% else %><div class="underline"></div><% end %></div>
+<div class="row"><div>Property Parcel Number (Optional): </div><% if project['location']['parcel_id'] %><div style="text-decoration:underline"><%= project['location']['parcel_id'] %></div><% else %><div class="underline"></div><% end %></div>
+<div class="row"><div>Operator Name and Address: </div><% if client['org_name'] %><div style="text-decoration:underline"><%= "#{client['org_name']}, #{client['address_street']}, #{client['address_city']}" %></div><% else %><div class="underline"></div><% end %></div>
 <ol type="A">
     <ol type="a">
     <li class="subheading">Site Description</li>
-        <div class="row"><li><div>Project description, intended use after NOI is filed:</div></li><div class="underline"></div></div>
-        <div class="row"><li><div>Sequence of major activities which disturb soils:</div></li><div class="underline"></div></div>
-        <div class="row"><li><div>Total Area:</div></li><div class="underline"></div><div>Disturbed Area:</div><div class="underline"></div></div>
+        <div class="row"><li><div>Project description, intended use after NOI is filed:</div></li><% if project['description'] %><div style="text-decoration:underline"><%= project['description'] %></div><% else %><div class="underline"></div><% end %></div>
+        <div class="row"><li><div>Sequence of major activities which disturb soils:</div></li><% if project['erosion_control']['activities'] %><div style="text-decoration:underline"><ol><% for activity in project['erosion_control']['activities'] %><li><%= activity %></li><% end %></ol></div><% else %><div class="underline"></div><% end %></div>
+        <div class="row"><li><div>Total Area:</div></li><% if project['erosion_control']['area'] %><div style="text-decoration:underline"><%= project['erosion_control']['area'] %> acres</div><% else %><div class="underline"></div><% end %><div>Disturbed Area:</div><% if project['erosion_control']['disturbed_area'] %><div style="text-decoration:underline"><%= project['erosion_control']['disturbed_area'] %> acres</div><% else %><div class="underline"></div><% end %></div>
         <div class="row"><li>Soils Information:</li></div>
         <ol type="i">
-            <div class="row"><li><div>Runoff Coefficient Pre-Construction (See Appendix A) :</div></li><div class="underline"></div></div>
-            <div class="row"><li><div>Runoff Coefficient Post-Construction (See Appendix A) :</div></li><div class="underline"></div></div>
-            <div class="row"><li><div>Describe the soil or the quality of any discharge from the site:</div></li><div class="underline"></div></div>
+            <div class="row"><li><div>Runoff Coefficient Pre-Construction (See Appendix A) :</div></li><% if project['erosion_control']['runoff_pre'] %><div style="text-decoration:underline"><%= project['erosion_control']['runoff_pre'] %></div><% else %><div class="underline"></div><% end %></div>
+            <div class="row"><li><div>Runoff Coefficient Post-Construction (See Appendix A) :</div></li><% if project['erosion_control']['runoff_post'] %><div style="text-decoration:underline"><%= project['erosion_control']['runoff_post'] %></div><% else %><div class="underline"></div><% end %></div>
+            <div class="row"><li><div>Describe the soil or the quality of any discharge from the site:</div></li><% if project['erosion_control']['soil_description'] %><div style="text-decoration:underline"><%= project['erosion_control']['soil_description'] %></div><% else %><div class="underline"></div><% end %></div>
         </ol>
     </ol>
     <li class="subheading">Responsible Parties</li>
@@ -82,23 +82,28 @@ ul {
             <th>Individual/Company</th>
             <th>Phone Number</th>
             <th>Service Provided</th>
-        <tr>
+        </tr>
+            <% if project['responsible_party'] %>
+            <% for party in project['responsible_party'] %>
+            <tr><td><%= party['name'] %></td><td><%= party['number'] %></td><td><%= party['service'] %></td></tr>
+            <% end %>
+            <% end %>
     </table>
     <li class="subheading">Receiving Waters</li>
     <ol type="a">
-        <div class="row"><li><div>The following waterbody (or waterbodies) receives stormwater from this construction site:</div></li><div class="underline"></div></div>
-        <div class="row"><li><div>Is the project located within the jurisdiction of an MS4?</div></li><input type="checkbox"><label>Yes</label><input type="checkbox"><label>No</label></div>
+        <div class="row"><li><div>The following waterbody (or waterbodies) receives stormwater from this construction site:</div></li><% if project['erosion_control']['receiving_waters'] %><div style="text-decoration:underline"><%= project['erosion_control']['receiving_waters'] %></div><% else %><div class="underline"></div><% end %></div>
+        <div class="row"><li><div>Is the project located within the jurisdiction of an MS4?</div></li><input type="checkbox"<% if project['erosion_control']['MS4'] %>checked<% end %>><label>Yes</label><input type="checkbox"<% if !project['erosion_control']['MS4'] %>checked<% end %>><label>No</label></div>
         <ol type="i">
-            <div class="row"><li><div>If yes, Name of MS4:</div></li><div class="underline"></div></div>
+            <div class="row"><li><div>If yes, Name of MS4:</div></li><% if project['erosion_control']['MS4'] %><div style="text-decoration:underline"><%= project['erosion_control']['MS4'] %></div><% else %><div class="underline"></div><% end %></div>
         </ol>
         <div class="row"><li><div>Ultimate Receiving Water:</div></li></div>
         <div class="multicheck">
-            <input type="checkbox"><label>Red River</label>
-            <input type="checkbox"><label>Ouachita River</label>
-            <input type="checkbox"><label>Arkansas River</label>
-            <input type="checkbox"><label>White River</label>
-            <input type="checkbox"><label>St. Francis River</label>
-            <input type="checkbox"><label>Mississippi River</label>
+            <input type="checkbox"<% if project['erosion_control']['ultimate_water'] == "Red River" %>checked<% end %><label>Red River</label>
+            <input type="checkbox"<% if project['erosion_control']['ultimate_water'] == "Ouachita River" %>checked<% end %>><label>Ouachita River</label>
+            <input type="checkbox"<% if project['erosion_control']['ultimate_water'] == "Arkansas River" %>checked<% end %>><label>Arkansas River</label>
+            <input type="checkbox"<% if project['erosion_control']['ultimate_water'] == "White River" %>checked<% end %>><label>White River</label>
+            <input type="checkbox"<% if project['erosion_control']['ultimate_water'] == "St. Francis River" %>checked<% end %>><label>St. Francis River</label>
+            <input type="checkbox"<% if project['erosion_control']['ultimate_water'] == "Mississippi River" %>checked<% end %>><label>Mississippi River</label>
         </div>
     </ol>
 *1 Increases in total acreage require an additional acreage request, an updated SWPPP and a $200 modification fee to be submitted to ADEQ.
@@ -108,10 +113,10 @@ ul {
         <div class="row"><li><div>Does the stormwater enter a waterbody on the 303(d) list or with an approved TMDL?</div></li><input type="checkbox"><label>Yes</label><input type="checkbox"><label>No</label></div>
         <div class="row"><li><div>If yes:</div></li></div>
         <ol type="i">
-            <div class="row"><li><div>Waterbody identified on 303(d) list:</div></li><div class="underline"></div></div>
-            <div class="row"><li><div>Pollutant addressed on 303(d) list or TMDL:</div></li><div class="underline"></div></div>
+            <div class="row"><li><div>Waterbody identified on 303(d) list:</div></li><% if 'FIXME' %><div style="text-decoration:underline"><%= 'FIXME' %></div><% else %><div class="underline"></div><% end %></div>
+            <div class="row"><li><div>Pollutant addressed on 303(d) list or TMDL:</div></li><% if 'FIXME' %><div style="text-decoration:underline"><%= 'FIXME' %></div><% else %><div class="underline"></div><% end %></div>
             <div class="row"><li><div>This specific project ,or generally construction activity i.e. surface erosion, is identified on 303(d) list or associated assumptions and allocations identified in the TMDL for the discharge:</div></li><input type="checkbox"><label>Yes</label><input type="checkbox"><label>No</label></li></div>
-            <div class="row"><li><div>iv. Additional controls implemented:</div></li><div class="underline"></div></div>
+            <div class="row"><li><div>iv. Additional controls implemented:</div></li><% if 'FIXME' %><div style="text-decoration:underline"><%= 'FIXME' %></div><% else %><div class="underline"></div><% end %></div>
         </ol>
     </ol>
     <li class="subheading">Attainment of Water Quality Standards After Authorization</li>
@@ -146,29 +151,29 @@ ul {
     <ol type="a">
         <li>Initial Site Stabilization, Erosion and Sediment Controls, and Best Management Practices:</li>
         <ol type="i">
-            <div class="row"><li><div>Initial Site Stabilization:</div></li><div class="underline"></div></div>
-            <div class="row"><li><div>Erosion and Sediment Controls:</div></li><div class="underline"></div></div>
+            <div class="row"><li><div>Initial Site Stabilization:</div></li><% if 'FIXME' %><div style="text-decoration:underline"><%= 'FIXME' %></div><% else %><div class="underline"></div><% end %></div>
+            <div class="row"><li><div>Erosion and Sediment Controls:</div></li><% if 'FIXME' %><div style="text-decoration:underline"><%= 'FIXME' %></div><% else %><div class="underline"></div><% end %></div>
             <div class="row"><li><div>If periodic inspections or other information indicates a control has been used inappropriately or incorrectly, the operator will replace or modify the control for site situations:</li><input type="checkbox"><label>Yes</label><input type="checkbox"><label>No</label></div>
-            <div class="row">If No, explain: <div class="underline"></div></div>
+            <div class="row">If No, explain: <% if 'FIXME' %><div style="text-decoration:underline"><%= 'FIXME' %></div><% else %><div class="underline"></div><% end %></div>
             <div class="row"><li><div>iv. Off-site accumulations of sediment will be removed at a frequency sufficient to minimize off-site impacts:</div></li><input type="checkbox"><label>Yes</label><input type="checkbox"><label>No</label></div>
-            <div class="row">If No, explain: <div class="underline"></div></div>
+            <div class="row">If No, explain: <% if 'FIXME' %><div style="text-decoration:underline"><%= 'FIXME' %></div><% else %><div class="underline"></div><% end %></div>
             <div class="row"><li><div>v. Sediment will be removed from sediment traps or sedimentation ponds when design capacity has been reduced by 50%:</div></li><input type="checkbox"><label>Yes</label><input type="checkbox"><label>No</label></div>
-            <div class="row">If No, explain: <div class="underline"></div></div>
+            <div class="row">If No, explain: <% if 'FIXME' %><div style="text-decoration:underline"><%= 'FIXME' %></div><% else %><div class="underline"></div><% end %></div>
             <div class="row"><li><div>vi. Litter, construction debris, and construction chemicals exposed to stormwater shall be prevented from becoming a pollutant source for stormwater discharges:</div></li><input type="checkbox"><label>Yes</label><input type="checkbox"><label>No</label></div>
-            <div class="row">If No, explain: <div class="underline"></div></div>
+            <div class="row">If No, explain: <% if 'FIXME' %><div style="text-decoration:underline"><%= 'FIXME' %></div><% else %><div class="underline"></div><% end %></div>
             <div class="row"><li><div>vii. Off-site material storage areas used solely by the permitted project are being covered by this SWPPP:</div></li><input type="checkbox"><label>Yes</label><input type="checkbox"><label>No</label></div>
-            <div class="row">If Yes, explain additional BMPs implemented at off-site material storage area:<div class="underline"></div></div>
+            <div class="row">If Yes, explain additional BMPs implemented at off-site material storage area:<% if 'FIXME' %><div style="text-decoration:underline"><%= 'FIXME' %></div><% else %><div class="underline"></div><% end %></div>
         </ol>
         <li>Stabilization Practices</li>
         <ol type="i">
-            <div class="row"><li>Description and Schedule:</li><div class="underline"></div></div>
+            <div class="row"><li>Description and Schedule:</li><% if 'FIXME' %><div style="text-decoration:underline"><%= 'FIXME' %></div><% else %><div class="underline"></div><% end %></div>
             <div class="row"><li>Are buffer areas required?</li><input type="checkbox"><label>Yes</label><input type="checkbox"><label>No</label></div>
             <div class="row">If Yes, are buffer areas being used? <input type="checkbox"><label>Yes</label><input type="checkbox"><label>No</label></div>
-            <div class="row">If Yes, describe natural buffer areas:<div class="underline"></div></div>
-            <div class="row">If No, explain why not:<div class="underline"></div></div>
+            <div class="row">If Yes, describe natural buffer areas:<% if 'FIXME' %><div style="text-decoration:underline"><%= 'FIXME' %></div><% else %><div class="underline"></div><% end %></div>
+            <div class="row">If No, explain why not:<% if 'FIXME' %><div style="text-decoration:underline"><%= 'FIXME' %></div><% else %><div class="underline"></div><% end %></div>
             <div class="row"><li>A record of the dates when grading activities occur, when construction activities temporarily or permanently cease on a portion of the site, and when stabilization measures are initiated shall be included with the plan.</li>
                 <input type="checkbox"><label>Yes</label><input type="checkbox"><label>No</label></div>
-            <div class="row">If No, explain:<div class="underline"></div></div>
+            <div class="row">If No, explain:<% if 'FIXME' %><div style="text-decoration:underline"><%= 'FIXME' %></div><% else %><div class="underline"></div><% end %></div>
             <div class="row"><li>iv. Deadlines for stabilization:</li></div>
             <ol type="1">
                     <div class="row"><li>1. Stabilization procedures will be initiated 14 days after construction activity temporarily ceases on a portion of the site.</li></div>
@@ -177,20 +182,20 @@ ul {
         </ol>
         <li>Structural Practices</li>
         <ol type="i">
-            <div class="row"><li>Describe any structural practices to divert flows from exposed soils, store flows, or otherwise limit runoff and the discharge of pollutants from exposed areas of the site:</li><div class="underline"></div></div>
-            <div class="row"><li>Describe Velocity Dissipation Devices:</li> <div class="underline"></div></div>
+            <div class="row"><li>Describe any structural practices to divert flows from exposed soils, store flows, or otherwise limit runoff and the discharge of pollutants from exposed areas of the site:</li><% if 'FIXME' %><div style="text-decoration:underline"><%= 'FIXME' %></div><% else %><div class="underline"></div><% end %></div>
+            <div class="row"><li>Describe Velocity Dissipation Devices:</li> <% if 'FIXME' %><div style="text-decoration:underline"><%= 'FIXME' %></div><% else %><div class="underline"></div><% end %></div>
             <div class="row"><li>Sediment Basins:</li></div>
             <ul>
                 <div class="row"><li><div>Are 10 or more acres draining to a common point?</div></li><input type="checkbox"><label>Yes</label><input type="checkbox"><label>No</label></div>
                 <div class="row"><li><div>Is a sediment basin included in the project?</div></li><input type="checkbox"><label>Yes</label><input type="checkbox"><label>No</label></div>
                 <div class="row"><div>If Yes, what is the designed capacity for the storage?</div></div>
                 <ul>
-                    <div class="row"><li><input type="checkbox"><label>3600 cubic feet per acre =:</label></li><div class="underline"></div></div>
+                    <div class="row"><li><input type="checkbox"><label>3600 cubic feet per acre =:</label></li><% if 'FIXME' %><div style="text-decoration:underline"><%= 'FIXME' %></div><% else %><div class="underline"></div><% end %></div>
                     <div class="row"><li>or</li></div>
-                    <div class="row"><li><input type="checkbox"><label>10 year, 24 hour storm =:</label></li><div class="underline"></div></div>
-                    <div class="row"><li><input type="checkbox"><label>Other criteria were used to design basin:</label></li><div class="underline"></div></div>
+                    <div class="row"><li><input type="checkbox"><label>10 year, 24 hour storm =:</label></li><% if 'FIXME' %><div style="text-decoration:underline"><%= 'FIXME' %></div><% else %><div class="underline"></div><% end %></div>
+                    <div class="row"><li><input type="checkbox"><label>Other criteria were used to design basin:</label></li><% if 'FIXME' %><div style="text-decoration:underline"><%= 'FIXME' %></div><% else %><div class="underline"></div><% end %></div>
                 </ul>
-                <div class="row">If No, explain why no sedimentation basin was included and describe required natural buffer areas and other controls implemented instead:<div class="underline"></div></div>
+                <div class="row">If No, explain why no sedimentation basin was included and describe required natural buffer areas and other controls implemented instead:<% if 'FIXME' %><div style="text-decoration:underline"><%= 'FIXME' %></div><% else %><div class="underline"></div><% end %></div>
             </ul>
         </ol>
     </ol>
@@ -201,17 +206,17 @@ ul {
         <ul>
             <div class="row"><li><input type="checkbox"><label>A stabilized construction entrance and exit </label></li></div>
             <div class="row"><li><input type="checkbox"><label>Vehicle tire washing</label></li></div>
-            <div class="row"><li><input type="checkbox"><label>Other controls, describe:</label></li><div class="underline"></div></div>
+            <div class="row"><li><input type="checkbox"><label>Other controls, describe:</label></li><% if 'FIXME' %><div style="text-decoration:underline"><%= 'FIXME' %></div><% else %><div class="underline"></div><% end %></div>
         </ul>
-        <div class="row"><li>Temporary Sanitary Facilities:</li><div class="underline"></div></div>
+        <div class="row"><li>Temporary Sanitary Facilities:</li><% if 'FIXME' %><div style="text-decoration:underline"><%= 'FIXME' %></div><% else %><div class="underline"></div><% end %></div>
         <div class="row"><li>Concrete Waste Area Provided:</li></div>
         <ul>
             <div class="row"><li><input type="checkbox"><label>Yes </label></li></div>
             <div class="row"><li><input type="checkbox"><label>No. Concrete is used on the site, but no concrete washout is provided.</label></li></div>
-            <div class="row">Explain why:<div class="underline"></div></div>
+            <div class="row">Explain why:<% if 'FIXME' %><div style="text-decoration:underline"><%= 'FIXME' %></div><% else %><div class="underline"></div><% end %></div>
             <div class="row"><li><input type="checkbox"><label>N/A, no concrete will be used with this project</label></li></div>
         </ul>
-        <div class="row"><li>Fuel Storage Areas, Hazardous Waste Storage, and Truck Wash Areas:</li><div class="underline"></div></div>
+        <div class="row"><li>Fuel Storage Areas, Hazardous Waste Storage, and Truck Wash Areas:</li><% if 'FIXME' %><div style="text-decoration:underline"><%= 'FIXME' %></div><% else %><div class="underline"></div><% end %></div>
     </ol>
     <li class="subheading">Non-Stormwater Discharges</li>
     <ol type="a">
@@ -228,11 +233,11 @@ ul {
             <div class="row"><li><input type="checkbox">Uncontaminated springs, excavation dewatering and groundwater (See Part I.B.13.C of the permit);</li></div>
             <div class="row"><li><input type="checkbox">Foundation or footing drains where flows are not contaminated with process materials such as solvents (See Part I.B.13.C of the permit);</li></div>
         </ul>
-        <div class="row"><li>Describe any controls associated with non-stormwater discharges present at the site:</li> <div class="underline"></div></div>
+        <div class="row"><li>Describe any controls associated with non-stormwater discharges present at the site:</li> <% if 'FIXME' %><div style="text-decoration:underline"><%= 'FIXME' %></div><% else %><div class="underline"></div><% end %></div>
     </ol>
     <li class="subheading">Permanent Controls for Post-Construction Stormwater Management:</li>
     <ul>
-        <div class="row"><li>Describe measures installed during the construction process to control pollutants in stormwater discharges that will occur after construction operations have been completed:</li><div class="underline"></div></div>
+        <div class="row"><li>Describe measures installed during the construction process to control pollutants in stormwater discharges that will occur after construction operations have been completed:</li><% if 'FIXME' %><div style="text-decoration:underline"><%= 'FIXME' %></div><% else %><div class="underline"></div><% end %></div>
     </ul>
     <li class="subheading">Applicable State or Local Programs: The SWPPP will be updated as necessary to reflect any revisions to applicable federal, state, or local requirements that affect the stormwater controls implemented at the site. <input type="checkbox"><label>Yes</label><input type="checkbox"><label>No</label></li>
     <li class="subheading">Inspections</li>
@@ -259,12 +264,12 @@ ul {
     </ol>
     <li class="subheading">Maintenance:</li>
     <ul>
-        <div class="row"><li>The following procedures to maintain vegetation, erosion and sediment control measures and other protective measures in good, effective operating condition will be followed:</li><div class="underline"></div></div>
+        <div class="row"><li>The following procedures to maintain vegetation, erosion and sediment control measures and other protective measures in good, effective operating condition will be followed:</li><% if 'FIXME' %><div style="text-decoration:underline"><%= 'FIXME' %></div><% else %><div class="underline"></div><% end %></div>
         <div class="row"><li>Any necessary repairs will be completed, when practicable, before the next storm event, but not to exceed a period of 3 business days of discovery, or as otherwise directed by state or local officials.</li></div>
     </ul>
     <li class="subheading">Employee Training:</li>
     <ul>
-        <div class="row"><li>The following is a description of the training plan for personnel (including contractors and subcontractors) on this project:</li><div class="underline"></div></div>
+        <div class="row"><li>The following is a description of the training plan for personnel (including contractors and subcontractors) on this project:</li><% if 'FIXME' %><div style="text-decoration:underline"><%= 'FIXME' %></div><% else %><div class="underline"></div><% end %></div>
         <div class="row"><li>**Note, Formal training classes given by Universities or other third-party organizations are not required, but recommended for qualified trainers; the permittee is responsible for the content of the training being adequate for personnel to implement the requirements of the permit.</li></div>
     </ul>
 </ol>
@@ -273,9 +278,9 @@ ul {
 <div class="container">
     <p>Certification</p>
     <p>"I certify under penalty of law that this document and all attachments such as Inspection Form were prepared under my direction or supervision in accordance with a system designed to ensure that qualified personnel properly gather and evaluate the information submitted. Based on my inquiry of the person or persons who manage the system, or those persons directly responsible for gathering the information, the information submitted is, to the best of my knowledge and belief, true, accurate, and complete. I am aware that there are significant penalties for submitting false information, including the possibility of fine and imprisonment for knowing violations."</p>
-    <div class="row">Signature of Responsible or Cognizant Official:<div class="underline"></div></div>
+    <div class="row">Signature of Responsible or Cognizant Official:<% if 'FIXME' %><div style="text-decoration:underline"><%= 'FIXME' %></div><% else %><div class="underline"></div><% end %></div>
     <br>
-    <div class="row">Title:<div class="underline"></div>Date:<div class="underline"></div></div>
+    <div class="row">Title:<% if 'FIXME' %><div style="text-decoration:underline"><%= 'FIXME' %></div><% else %><div class="underline"></div><% end %>Date:<% if 'FIXME' %><div style="text-decoration:underline"><%= 'FIXME' %></div><% else %><div class="underline"></div><% end %></div>
 </div>
 <div style="page-break-after:always"></div>
 <div class="container">

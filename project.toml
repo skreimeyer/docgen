@@ -6,7 +6,7 @@ address_city = "Little Rock"
 address_state = "Arkansas"
 address_zip = 72201
 contact_name = "David Hopkins, P.E."
-contact_phone = "_371-4475"
+contact_phone = "_71-4475"
 contact_email = "__@littlerock.gov"
 
 [engineer]
@@ -17,7 +17,7 @@ address_state = "Arkansas"
 address_zip = 72211
 senior = "Brad Peterson"
 contact = "Sam Kreimeyer"
-phone = "_664-3245 ext.1167"
+phone = "_64-3245 ext.1167"
 email = "__@craftontull.com"
 
 
@@ -34,3 +34,35 @@ to the east and west.'''
     parcel_id = "24L0150001500"
     legal = '''Beginning at some point thence to some others.
     containing 100 square feet, more or less'''
+
+    [project.erosion_control]
+    activities = ['one','two','three']
+    area = 5
+    disturbed_area = 3
+    runoff_pre = 0.3
+    runoff_post = 0.75
+    soil_description = '''There is some soil and it's like this: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'''
+    receiving_waters = '''An unnamed tributary, thence to the river.'''
+    ultimate_water = "Arkansas River"
+    MS4 = "City of Little Rock"
+
+    [[project.responsible_party]]
+    name = "ABC Environmental"
+    number = "123-4567"
+    service = '''install erosion controls'''
+
+    [[project.responsible_party]]
+    name = "Owner"
+    number = "123-9876"
+    service = '''owns it'''
+
+    [project.receiving_water]
+    name = "Arkansas River"
+    flowpath = '''some waters thence to others'''
+    MS4 = "City of Little Rock"
+    on_303d = false
+    
+        [[project.receiving_water.tmdl]]
+        name = "turbidity"
+        value = "1ppm"
+

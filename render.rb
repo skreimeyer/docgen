@@ -4,8 +4,6 @@ require 'toml-rb'
 require 'erb'
 
 config = TomlRB.load_file('project.toml')
-puts 'this is the config'
-puts config
 
 template = File.read('templates/SWPPP_template.erb')
 render = ERB.new(template)
