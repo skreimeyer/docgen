@@ -3,11 +3,24 @@
 require 'toml-rb'
 require 'erb'
 
-config = TomlRB.load_file('project.toml')
+
+class Config
+    attr_reader :data
+
+    def initialize(sourcefile)
+        @data = TomlRB.load_file(sourcefile)
+    end
+
+    def b
+        binding
+    end
+end
+
+config = Config.new('project.toml')
 
 template = File.read('templates/SWPPP_template.erb')
 render = ERB.new(template)
-html = render.result_with_hash(config)
+html = render.result config.b
 
 File.open('templates/check.html', 'w') { |f| f.write(html) }
 
