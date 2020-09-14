@@ -70,14 +70,14 @@ ul {
 <ol type="A">
     <ol type="a">
     <li class="subheading">Site Description</li>
-        <div class="row"><li><div>Project description, intended use after NOI is filed:</div></li><% if project['description'] %><div style="text-decoration:underline"><%= project['description'] %></div><% else %><div class="underline"></div><% end %></div>
-        <div class="row"><li><div>Sequence of major activities which disturb soils:</div></li><% if project['erosion_control']['activities'] %><div style="text-decoration:underline"><ol><% for activity in project['erosion_control']['activities'] %><li><%= activity %></li><% end %></ol></div><% else %><div class="underline"></div><% end %></div>
-        <div class="row"><li><div>Total Area:</div></li><% if project['erosion_control']['area'] %><div style="text-decoration:underline"><%= project['erosion_control']['area'] %> acres</div><% else %><div class="underline"></div><% end %><div>Disturbed Area:</div><% if project['erosion_control']['disturbed_area'] %><div style="text-decoration:underline"><%= project['erosion_control']['disturbed_area'] %> acres</div><% else %><div class="underline"></div><% end %></div>
+        <div class="row"><li><div>Project description, intended use after NOI is filed:</div></li>{{project|content_or_blank(['description'])}}</div>
+        <div class="row"><li><div>Sequence of major activities which disturb soils:</div></li>{% if project.erosion_control.activities %}<ol>{% for activity in project.erosion_control.activities %}<li>{{ activity }}</li>{% endfor %}</ol>{% else %}<div class=blank-line"></div>{% endif %}</div>
+        <div class="row"><li><div>Total Area:</div></li>{{project|content_or_blank(['area','erosion_control'])}}<div>Disturbed Area:</div>{{project|content_or_blank(['disturbed_area','erosion_control'])}}</div>
         <div class="row"><li>Soils Information:</li></div>
         <ol type="i">
-            <div class="row"><li><div>Runoff Coefficient Pre-Construction (See Appendix A) :</div></li><% if project['erosion_control']['runoff_pre'] %><div style="text-decoration:underline"><%= project['erosion_control']['runoff_pre'] %></div><% else %><div class="underline"></div><% end %></div>
-            <div class="row"><li><div>Runoff Coefficient Post-Construction (See Appendix A) :</div></li><% if project['erosion_control']['runoff_post'] %><div style="text-decoration:underline"><%= project['erosion_control']['runoff_post'] %></div><% else %><div class="underline"></div><% end %></div>
-            <div class="row"><li><div>Describe the soil or the quality of any discharge from the site:</div></li><% if project['erosion_control']['soil_description'] %><div style="text-decoration:underline"><%= project['erosion_control']['soil_description'] %></div><% else %><div class="underline"></div><% end %></div>
+            <div class="row"><li><div>Runoff Coefficient Pre-Construction (See Appendix A) :</div></li>{{project|content_or_blank(['runoff_pre', 'erosion_control'])}}</div>
+            <div class="row"><li><div>Runoff Coefficient Post-Construction (See Appendix A) :</div></li>{{project|content_or_blank(['runoff_post', 'erosion_control'])}}</div>
+            <div class="row"><li><div>Describe the soil or the quality of any discharge from the site:</div></li>{{project|content_or_blank(['erosion_control', 'erosion_control'])}}</div>
         </ol>
     </ol>
     <li class="subheading">Responsible Parties</li>
@@ -87,11 +87,9 @@ ul {
             <th>Phone Number</th>
             <th>Service Provided</th>
         </tr>
-            <% if project['responsible_party'] %>
-            <% for party in project['responsible_party'] %>
-            <tr><td><%= party['name'] %></td><td><%= party['number'] %></td><td><%= party['service'] %></td></tr>
-            <% end %>
-            <% end %>
+            {% for party in project.responsible_party %}
+            <tr><td>{{party.name}}</td><td>{{party.number}}</td><td>{{party.service}}</td></tr>
+        {% endfor %}
     </table>
     <li class="subheading">Receiving Waters</li>
     <ol type="a">
